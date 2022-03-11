@@ -29,7 +29,7 @@
     const login = () => {
         setTimeout(() => {
             router.push({
-                name: 'welcome'
+                name: 'Products'
             })
         }, 300)
     }

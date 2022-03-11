@@ -1,7 +1,7 @@
 {
-  "name": "vue-tailwind-template",
+  "name": "dapuraya-owner",
   "version": "1.0.0",
-  "description": "A simple starter template for Vue JS 3 and Tailwindcss",
+  "description": "A web app for @dapuraya",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

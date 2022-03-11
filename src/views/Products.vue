@@ -7,13 +7,15 @@
 				<i class="fa fa-user"></i>
 				<p class="text-base">42 customer telah order</p>
 			</div>
+			
+			<div @click="toCreateProduct" class="active:scale-95 duration-300 w-44 flex items-center gap-2 mb-5 rounded-xl px-3 py-2 text-gray-700">
+				<i class="fa fa-plus"></i>
+				<p class="text-base">Tambah produk</p>
+			</div>
 			<template v-for="card in exampleCard" :key="card.id">
 				<CardProduct :source="card" />
 			</template>
 		</section>
-
-		<BottomSheet v-on:close="closeBottomSheet" :show="isShow" :order="order" />
-		<FloatingOrder v-on:order="showBottomSheet" />
 	</main>	
 </template>
 
@@ -23,12 +25,9 @@
 	import { computed, ref } from 'vue'
 	import HeaderProducts from '@/components/HeaderProducts.vue'
 	import CardProduct from '@/components/CardProduct.vue'
-	import BottomSheet from '@/components/BottomSheet.vue'
-	import FloatingOrder from '@/components/FloatingOrder.vue'
 
 	const route = useRoute()
 	const router = useRouter()
-	const dropPointName = computed(() => route.params.dropPointName)
 
 	const isShow = ref(false)
 	let order = ref({
@@ -36,23 +35,16 @@
 		total: 45000
 	})
 
-	const showBottomSheet = val => {
-		setTimeout(() => {
-			order.value = val
-			isShow.value = true
-		}, 300)
-	}
-
-	const closeBottomSheet = () => {
-		setTimeout(() => {
-			isShow.value = false
-		}, 300)
-	}
-
 	const toOrders = () => {
 		setTimeout(() => {
 			router.push({ name: 'Orders' })
 		}, 300);
+	}
+
+	const toCreateProduct = () => {
+		setTimeout(() => {
+			router.push({ name: 'CreateProduct' })
+		}, 300)
 	}
  	
 	const exampleCard = [

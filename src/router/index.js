@@ -8,7 +8,7 @@ const routes = [
 	},
 	{
 		name: 'Products',
-		path: '/products/:dropPointName',
+		path: '/products',
 		component: () => import('@/views/Products.vue')
 	},
 	{
@@ -17,14 +17,14 @@ const routes = [
 		component: () => import('@/views/Notification.vue')
 	},
 	{
-		name: 'welcome',
-		path: '/welcome',
-		component: () => import('@/views/Home.vue')
-	},
-	{
 		name: 'Orders',
 		path: '/orders',
 		component: () => import('@/views/Orders.vue')
+	},
+	{
+		name: 'CreateProduct',
+		path: '/create-product',
+		component: () => import('@/views/CreateProduct.vue')
 	}
 ]
 
