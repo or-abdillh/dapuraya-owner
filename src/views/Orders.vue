@@ -40,21 +40,30 @@
             name: 'Agus',
             phone: '085654036XXX',
             date: 'Rab 6 maret 2022',
-            pcs: 1,
-            price: 45000,
+            address: 'Handil Bakti RT06 RW02',
+            pcs: 2,
+            price: 80000,
             prefix: 'Rp',
-            item: 'American risol',
-            paymentStatus: true
+            items: [
+                { name: 'American Risol', pcs: 1, price: 45000 },
+                { name: 'kue Cubit', pcs: 1, price: 35000 }
+            ],
+            paymentStatus: true,
+            method: 'Diantar kurir'
         },
         {
             name: 'Meta',
             phone: '085654036XXX',
             date: 'Sen 5 maret 2022',
+            address: 'Sungai Andai RT21 RW01',
             pcs: 2,
             price: 90000,
             prefix: 'Rp',
-            item: 'American risol',
-            paymentStatus: false
+            items: [
+                { name: 'American risol', pcs: 2, price: 45000 }
+            ],
+            paymentStatus: false,
+            method: 'Ambil sendiri'
         }
     ]
     
