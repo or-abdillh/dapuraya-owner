@@ -12,9 +12,9 @@
             <i @click="openPanel(true)" class="active:scale-75 duration-300 fa fa-ellipsis-h"></i>
         </div>
         <div class="text-right pr-5 py-3">
-            <p class="text-xs flex items-center gap-2">
-                {{ source.paymentStatus ? 'Sudah Bayar' : 'Belum Bayar' }}
-                <i :class="source.paymentStatus ? 'text-green-300' : 'text-red-400'" class="text-base fa fa-circle"></i>
+            <p class="text-xs flex items-center gap-2 active:scale-75 duration-300" @click="paymentStatus = !paymentStatus">
+                {{ paymentStatus ? 'Sudah Bayar' : 'Belum Bayar' }}
+                <i :class="paymentStatus ? 'text-green-300' : 'text-red-400'" class="text-base fa fa-circle"></i>
             </p>
             <p>{{ source.pcs }} pcs</p>
             <p>{{ source.prefix }} {{ source.price.toLocaleString('id') }}</p>
@@ -27,7 +27,7 @@
             <div class="w-full py-3 px-5 bg-slate-300">
                 {{ source.address }}
             </div>
-            <div class="w-full py-3 px-5 duration-300" :class="source.paymentStatus ? 'bg-green-300' : 'bg-red-300'">
+            <div class="w-full py-3 px-5 duration-300" :class="paymentStatus ? 'bg-green-300' : 'bg-red-300'">
                 <template v-for="(item, x) in source.items" :key="x">
                     <span class="flex justify-between items-center text-gray-700">
                         <p>{{ item.pcs }}</p>
@@ -59,6 +59,8 @@
 
     const chevronDown = ref(false)
     const optionsDown = ref(false)
+
+    const paymentStatus = ref(props.source.paymentStatus)
 
     const openPanel = (options = false) => {
         if (options) {
