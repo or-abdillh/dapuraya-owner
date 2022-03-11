@@ -31,9 +31,11 @@
 <script setup>
     import { useRouter } from 'vue-router'
     import { ref, watch } from 'vue'
+    import { useOrders } from '@/stores/orders'
     import OrderCard from '@/components/OrderCard.vue'
     
     const router = useRouter()
+    const orders = useOrders()
 
     const exampleOrder = [
         {

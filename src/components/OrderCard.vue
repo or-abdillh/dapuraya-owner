@@ -40,7 +40,7 @@
 
         <div v-if="optionsDown" class="duration-300 w-full">
             <div class="w-full text-gray-200 py-3 px-5 bg-gray-700">
-                <button class="active:scale-75 duration-300 mr-6">Edit</button>
+                <button @click="btnEditOrder" class="active:scale-75 duration-300 mr-6">Edit</button>
                 <button class="active:scale-75 duration-300">Batal order</button>
             </div>
         </div>
@@ -50,6 +50,8 @@
 <script setup>
 
     import { ref, reactive } from 'vue'
+    import { useRouter } from 'vue-router'
+    import { useOrders } from '@/stores/orders'
 
     const props = defineProps({
         source: {
@@ -59,6 +61,16 @@
 
     const chevronDown = ref(false)
     const optionsDown = ref(false)
+
+    const router = useRouter()
+    const orders = useOrders()
+    
+    const btnEditOrder = () => {
+        orders.addOrder(props.source)
+        setTimeout(() => {
+            router.push({ name: 'EditOrder' })
+        }, 300)
+    }
 
     const paymentStatus = ref(props.source.paymentStatus)
 

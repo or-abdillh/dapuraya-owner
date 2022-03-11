@@ -4,8 +4,14 @@ export const useOrders = defineStore('orders', {
 	state() {
 		return {
 			items: [],
-			amounts: 0,
-			total: 0
+			order: {
+				name: '',
+				phone: '',
+				address: '',
+				amounts: 0,
+				total: 0,
+				items: []
+			}
 		}
 	},
 	actions: {
@@ -23,11 +29,9 @@ export const useOrders = defineStore('orders', {
 			}
 
 			if ( payload.id !== currentDuplicate ) this.items.push(payload)
-		},
-		getters: {
-			getCurrentItem(state) {
-				return state.items
-			}
+		}, 
+		addOrder(payload) {
+			this.order = payload
 		}
 	}
 })
