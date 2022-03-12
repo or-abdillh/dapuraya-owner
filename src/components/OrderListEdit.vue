@@ -4,7 +4,7 @@
 			<p class="font-medium">{{ item.name }}</p>
 			<p>Rp{{ price.toLocaleString('id') }}</p>
 		</div>
-		<div class="w-7/12 text-gray-100 flex items-center justify-around gap-1 px-2 w-3/12 rounded-full">
+		<div class="w-6/12 text-gray-100 flex items-center justify-around gap-1 px-2  rounded-full">
 			<div class="bg-gray-500 w-8/12 flex justify-around items-center rounded-full py-2 px-2">
 				<button @click="increment(false)">-</button>
 				{{ pcs }}

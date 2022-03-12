@@ -31,18 +31,23 @@
 			<button class="text-gray-100 bg-orange-500 w-4/12 py-1 rounded-full">SIMPAN</button>
 		</section>
 	</main>
+	<ModalDialog :show="showModalDialog" v-on:confirm="removeItem" :id="itemId" />
 </template>
 
 <script setup>
 
-	import { computed } from 'vue'
+	import { computed, ref } from 'vue'
 	import { useOrders } from '@/stores/orders'
 	import { useRouter } from 'vue-router'
 	import OrderListEdit from '@/components/OrderListEdit.vue'
+	import ModalDialog from '@/components/ModalDialog.vue'
 
 	const orders = useOrders()
 	const router = useRouter()
 	const order = computed(() => orders.order)
+
+	const showModalDialog = ref(false)
+	const itemId = ref(null)
 
 	const updateItem = val => {
 		let pcs = 0
@@ -61,6 +66,11 @@
 	}
 
 	const dismiss = id => {
+		showModalDialog.value = true
+		itemId.value = id
+	}
+
+	const removeItem = id => {
 		orders.order.items.forEach((item, x) => {
 			if (item.id === id) {
 				updateItem({
@@ -72,6 +82,7 @@
 				})
 			}
 		})
+		showModalDialog.value = false
 	}
 	
 </script>

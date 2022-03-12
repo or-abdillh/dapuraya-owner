@@ -12,6 +12,7 @@
 				<i class="fa fa-plus"></i>
 				<p class="text-base">Tambah produk</p>
 			</div>
+			
 			<template v-for="card in exampleCard" :key="card.id">
 				<CardProduct :source="card" />
 			</template>
