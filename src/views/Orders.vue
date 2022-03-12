@@ -47,8 +47,8 @@
             price: 80000,
             prefix: 'Rp',
             items: [
-                { name: 'American Risol', pcs: 1, price: 45000 },
-                { name: 'kue Cubit', pcs: 1, price: 35000 }
+                { name: 'American Risol', pcs: 1, price: 45000, id: 1, total: 45000 },
+                { name: 'Kue Cubit', pcs: 1, price: 35000, id: 2, total: 35000 }
             ],
             paymentStatus: true,
             method: 'Diantar kurir'
@@ -62,7 +62,7 @@
             price: 90000,
             prefix: 'Rp',
             items: [
-                { name: 'American risol', pcs: 2, price: 45000 }
+                { name: 'American risol', pcs: 2, price: 45000, id: 1, total: 90000 }
             ],
             paymentStatus: false,
             method: 'Ambil sendiri'

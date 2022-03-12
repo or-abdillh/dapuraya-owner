@@ -20,22 +20,7 @@
 			<span class="order-field">{{ order.phone }}</span>
 			<span class="order-field">{{ order.address }}</span>
 			<template v-for="(item, x) in order.items" :key="x">
-				<span class="order-field text-sm flex justify-between">
-					<div>
-						<p class="font-medium">{{ item.name }}</p>
-						<p>Rp{{ item.price }}</p>
-					</div>
-					<div class="w-6/12 text-gray-100 flex items-center justify-around gap-1 px-2 w-3/12 rounded-full">
-						<div class="bg-gray-500 w-8/12 flex justify-around items-center rounded-full py-2 px-2">
-							<button>-</button>
-							{{ item.pcs }}
-							<button>+</button>
-						</div>
-						<div class="w-3/12 rounded-full bg-gray-500 grid text-3xl">
-							<button>-</button>
-						</div>
-					</div>
-				</span>
+				<OrderListEdit v-on:dismiss="dismiss" v-on:change="updateItem" :item="item" />	
 			</template>
 		</section>
 		<section class="w-11/12 mx-auto mt-5 flex justify-between items-center">
@@ -53,9 +38,40 @@
 	import { computed } from 'vue'
 	import { useOrders } from '@/stores/orders'
 	import { useRouter } from 'vue-router'
+	import OrderListEdit from '@/components/OrderListEdit.vue'
 
 	const orders = useOrders()
 	const router = useRouter()
 	const order = computed(() => orders.order)
+
+	const updateItem = val => {
+		let pcs = 0
+		let price = 0
+		orders.order.items.forEach((item, x) => {
+			if (item.id === val.id) orders.order.items[x] = val
+		})
+
+		orders.order.items.forEach(item => {
+			pcs += item.pcs
+			price += item.total
+		})
+
+		orders.order.pcs = pcs
+		orders.order.price = price
+	}
+
+	const dismiss = id => {
+		orders.order.items.forEach((item, x) => {
+			if (item.id === id) {
+				updateItem({
+					id,
+					name: '',
+					pcs: 0,
+					price: 0,
+					total: 0
+				})
+			}
+		})
+	}
 	
 </script>
