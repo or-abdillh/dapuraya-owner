@@ -30,6 +30,11 @@ const routes = [
 		name: 'EditOrder',
 		path: '/edit-order',
 		component: () => import('@/views/EditOrder.vue')
+	},
+	{
+		name: 'AddItemOrder',
+		path: '/add-item-order',
+		component: () => import('@/views/AddItemOrder.vue')
 	}
 ]
 

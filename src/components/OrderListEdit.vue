@@ -1,5 +1,5 @@
 <template>
-	<section v-if="!dismiss" class="order-field text-sm flex justify-between">
+	<section v-if="item.name !== ''" class="order-field text-sm flex justify-between">
 		<div>
 			<p class="font-medium">{{ item.name }}</p>
 			<p>Rp{{ price.toLocaleString('id') }}</p>
@@ -43,7 +43,6 @@
 	}
 
 	const btnDismiss = () => {
-		dismiss.value = true
 		emits('dismiss', props.item.id)
 	}
 
