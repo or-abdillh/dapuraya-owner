@@ -11,7 +11,19 @@ export const useOrders = defineStore('orders', {
 				amounts: 0,
 				total: 0,
 				items: []
-			}
+			}, 
+			products: [
+				{
+					name: 'American Risol',
+					id: 1,
+					price: 45000
+				},
+				{
+					name: 'Kue Cubit',
+					id: 2,
+					price: 35000
+				}
+			]
 		}
 	},
 	actions: {
