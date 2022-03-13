@@ -2,7 +2,7 @@
 	<main>
 		<HeaderProducts :title="dropPointName" />
 
-		<section class="columns-2 mt-40">
+		<section class="columns-2 mt-56">
 			<div @click="toOrders" class="active:scale-95 duration-300 w-44 flex items-center gap-2 mb-5 bg-orange-500 rounded-xl px-3 py-2 text-gray-50">
 				<i class="fa fa-user"></i>
 				<p class="text-base">42 customer telah order</p>

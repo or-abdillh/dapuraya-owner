@@ -1,6 +1,7 @@
-<template>
+	<template>
 	<section class="z-20 fixed top-0 left-0 right-0">
-		<div class="w-full md:w-6/12 lg:w-5/12 md:mx-auto xl:w-4/12 bg-primary p-5">
+		<Menu />
+		<section class="w-full md:w-6/12 lg:w-5/12 md:mx-auto xl:w-4/12 bg-primary p-5">
 			<div class="flex justify-between mb-6 items-center text-2xl">
 				<i @click="router.go(-1)" class="fa fa-arrow-left"></i>
 				<i class="fa fa-arrow-right"></i>
@@ -18,7 +19,7 @@
 					<p class="text-sm">Tambah jadwal</p>
 				</span>
 			</div>
-		</div>
+		</section>
 	</section>
 </template>
 
@@ -27,6 +28,7 @@
 	import { ref, computed } from 'vue'
 	import { useRouter } from 'vue-router'
 	import { useOrders } from '@/stores/orders'  
+	import Menu from '@/components/Menu.vue'
 
 	const currentID = ref(2)
 	const router = useRouter()
