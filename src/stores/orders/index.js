@@ -23,6 +23,18 @@ export const useOrders = defineStore('orders', {
 					id: 2,
 					price: 35000
 				}
+			],
+			dropPoints: [
+				{
+					date: 'Selasa, 3 maret 2022',
+					place: 'Handil Bakti',
+					id: 1
+				},
+				{
+					date: 'Rabu, 4 Maret 2022',
+					place: 'Marabahan',
+					id: 2
+				}
 			]
 		}
 	},

@@ -8,7 +8,7 @@
 				<p class="text-base">42 customer telah order</p>
 			</div>
 			
-			<div @click="toCreateProduct" class="active:scale-95 duration-300 w-44 flex items-center gap-2 mb-5 rounded-xl px-3 py-2 text-gray-700">
+			<div class="active:scale-95 duration-300 w-44 flex items-center gap-2 mb-5 rounded-xl px-3 py-2 text-gray-700">
 				<i class="fa fa-plus"></i>
 				<p class="text-base">Tambah produk</p>
 			</div>
@@ -40,12 +40,6 @@
 		setTimeout(() => {
 			router.push({ name: 'Orders' })
 		}, 300);
-	}
-
-	const toCreateProduct = () => {
-		setTimeout(() => {
-			router.push({ name: 'CreateProduct' })
-		}, 300)
 	}
  	
 	const exampleCard = [
