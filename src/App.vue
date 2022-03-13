@@ -1,5 +1,5 @@
 <template>
-	<main class="app" :class="routeName === 'CreateProduct' ? 'p-0' : 'p-5'">
+	<main class="app" :class="routeName === 'EditSchedule' ? 'p-0' : 'p-5'">
 		<router-view></router-view>
 	</main>
 </template>

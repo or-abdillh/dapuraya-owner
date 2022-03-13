@@ -28,14 +28,17 @@ export const useOrders = defineStore('orders', {
 				{
 					date: 'Selasa, 3 maret 2022',
 					place: 'Handil Bakti',
-					id: 1
+					id: 1,
+					coureer: true
 				},
 				{
 					date: 'Rabu, 4 Maret 2022',
 					place: 'Marabahan',
-					id: 2
+					id: 2,
+					coureer: false
 				}
-			]
+			],
+			currentDropPoint: ''
 		}
 	},
 	actions: {

@@ -22,11 +22,6 @@ const routes = [
 		component: () => import('@/views/Orders.vue')
 	},
 	{
-		name: 'CreateProduct',
-		path: '/create-product',
-		component: () => import('@/views/CreateProduct.vue')
-	},
-	{
 		name: 'EditOrder',
 		path: '/edit-order',
 		component: () => import('@/views/EditOrder.vue')
@@ -35,6 +30,11 @@ const routes = [
 		name: 'AddItemOrder',
 		path: '/add-item-order',
 		component: () => import('@/views/AddItemOrder.vue')
+	}, 
+	{
+		name: 'EditSchedule',
+		path: '/edit-schedule',
+		component: () => import('@/views/EditSchedule.vue')
 	}
 ]
 
