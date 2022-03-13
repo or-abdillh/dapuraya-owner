@@ -9,6 +9,6 @@ export default [
 	},
 	{
 		title: 'Logout',
-		path: '/logout'
+		path: '/'
 	}
 ]
