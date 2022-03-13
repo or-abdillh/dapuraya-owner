@@ -35,6 +35,11 @@ const routes = [
 		name: 'EditSchedule',
 		path: '/edit-schedule',
 		component: () => import('@/views/EditSchedule.vue')
+	},
+	{
+		name: 'AddProduct',
+		path: '/add-product',
+		component: () => import('@/views/AddProduct.vue')
 	}
 ]
 
