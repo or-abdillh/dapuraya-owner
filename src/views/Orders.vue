@@ -1,12 +1,17 @@
 <template>
     <section class="fixed top-0 left-0 right-0">
         <div class="bg-primary w-full md:w-6/12 lg:w-5/12 md:mx-auto xl:w-4/12 p-5">
-            <section class="flex items-center gap-6 mb-8">
-                <i @click="router.go(-1)" class="fa fa-arrow-left active:scale-75 duration-300"></i>
-                <div>
-                    <h1 class="font-medium">Marabahan</h1>
-                    <p class="text-sm">Sabtu 05 maret 2022</p>
+            <section class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-6">
+                    <i @click="router.go(-1)" class="fa fa-arrow-left active:scale-75 duration-300"></i>
+                    <div>
+                        <h1 class="font-medium">Marabahan</h1>
+                        <p class="text-sm">Sabtu 05 maret 2022</p>
+                    </div>
                 </div>
+                <div class="w-4/12">
+                    <SwitchButton />
+                 </div>
             </section>
 
             <section class="flex justify-between items-end">
@@ -33,6 +38,7 @@
     import { ref, watch } from 'vue'
     import { useOrders } from '@/stores/orders'
     import OrderCard from '@/components/OrderCard.vue'
+    import SwitchButton from '@/components/SwitchButton.vue'
     
     const router = useRouter()
     const orders = useOrders()
