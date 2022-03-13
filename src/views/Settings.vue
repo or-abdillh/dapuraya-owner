@@ -19,6 +19,7 @@
 	import { ref } from 'vue'
 	import HeaderNavigation from '@/components/HeaderNavigation.vue'
 	import DropPoint from '@/components/DropPoint.vue'
+	import Product from '@/components/Product.vue'
 
 	const tabActive = ref(DropPoint)
 
@@ -29,7 +30,7 @@
 		}, 
 		{
 			name: 'Product',
-			component: ''
+			component: Product
 		}
 	]
 
