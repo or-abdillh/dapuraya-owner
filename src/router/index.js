@@ -59,6 +59,6 @@ const router = createRouter({
 	routes
 })
 
-guard(router)
+//guard(router)
 
 export default router

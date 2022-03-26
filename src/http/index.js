@@ -9,10 +9,19 @@ export default {
 	async get(url, callback) {
 		try {
 			const response = await axios.get(baseURL + url, { headers })
-			if (response.data.status) callback(response.data)	
+			callback(response.data)	
 		} catch(err) {
 			if (err.response) callback(err.response.data)
-			callback(err)
+			else callback(err)
+		}
+	},
+	async post(url, body, callback, head = headers) {
+		try {
+			const response = await axios.post(baseURL + url, body, { headers: head })
+			callback(response.data)
+		} catch(err) {
+			if (err.response) callback(err.response.data)
+			else callback(err)
 		}
 	}
 }
