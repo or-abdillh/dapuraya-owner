@@ -23,5 +23,13 @@ export default {
 			if (err.response) callback(err.response.data)
 			else callback(err)
 		}
+	},
+	async put(url, body, callback, head = headers) {
+		try {
+			const response = await axios.put(baseURL + url, body, { headers: head })
+			callback(response.data)
+		} catch(err) {
+			if (err.response) callback(err.response.data)
+		}
 	}
 }

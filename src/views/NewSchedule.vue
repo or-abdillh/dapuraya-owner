@@ -13,7 +13,7 @@
 		<form @submit.prevent="formSubmit" class="mt-5 text-gray-700 flex flex-wrap gap-3">
 			<span class="bg-orange-300 w-full pr-1 pl-3 rounded-xl overflow-hidden">
 				<select v-model="form.dropPointId" class="w-11/12 outline-0 bg-orange-300 py-3">
-					<option value="0" selected="true">Drop point name</option>
+					<option selected>Drop point name</option>
 					<template v-for="item in dropPoints" :key="item">
 						<option :value="item.drop_point_id">{{ item.drop_point_name }}</option>
 					</template>
@@ -41,15 +41,18 @@
 	import { computed, ref, onMounted, reactive } from 'vue'
 	import { useOpenOrders } from '@/stores/openOrders'
 	import http from '@/http'
-	import formatingDate from '@/helper/formatingDate.js'
 	import LoadAction from '@/components/LoadAction.vue'
 
 	const router = useRouter()
-	const route = useRoute()
 	const openOrders = useOpenOrders()
 
-	const openOrdersLists = computed(() => openOrders.lists)
 	const dropPoints = ref(0)
+
+	onMounted(() => {
+		http.get('/drop-points', res => {
+			dropPoints.value = res.results.dropPoints
+		})
+	})
 
 	const isLoad = ref(false)
 	const isSuccess = ref(false)
@@ -58,25 +61,9 @@
 	const form = reactive({
 		dropPointId: '',
 		date: '',
-		coureerAvailable: false,
-		openOrderId: computed(() => route.params.key)
+		coureerAvailable: false	
 	})
 	
-	//Get drop points from server
-	onMounted(() => {
-
-		http.get('/drop-points', res => {
-			dropPoints.value = res.results.dropPoints
-		})
-
-		//Get open order by id
-		const currentOpenOrder = openOrdersLists.value.filter(item => item.open_order_id == form.openOrderId)[0]
-		
-		form.date = formatingDate(currentOpenOrder.open_order_date)
-		form.dropPointId = currentOpenOrder.drop_point_id
-		form.coureerAvailable = Boolean(currentOpenOrder.coureer_available)
-	})
-
 	const onFocusEl = el => {
 		el.target.setAttribute('type', 'date')
 	}
@@ -89,7 +76,7 @@
 
 		[ isLoad.value, isSuccess.value, isFail.value ] = [ true, false, false ]
 		setTimeout(() => {
-			http.put('/admin/open-orders', form, res => {
+			http.post('/admin/open-orders', form, res => {
 				if (res.status) [ isLoad.value, isSuccess.value ] = [ false, true ]
 				else isFail.value = true
 			})

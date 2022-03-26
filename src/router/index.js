@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import guard from '@/router/guard.js'
 
 const routes = [
 	{
@@ -34,7 +33,7 @@ const routes = [
 	}, 
 	{
 		name: 'EditSchedule',
-		path: '/edit-schedule',
+		path: '/edit-schedule/:key',
 		component: () => import('@/views/EditSchedule.vue')
 	},
 	{
@@ -51,6 +50,11 @@ const routes = [
 		name: 'ChangePassword',
 		path: '/password',
 		component: () => import('@/views/Password.vue')
+	},
+	{
+		name: 'NewSchedule',
+		path: '/new-schedule',
+		component: () => import('@/views/NewSchedule.vue')
 	}
 ]
 

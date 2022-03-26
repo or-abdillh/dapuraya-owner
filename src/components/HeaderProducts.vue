@@ -17,10 +17,10 @@
 					<span @click="currentID = point.open_order_id" style="min-width: 30%" class="flex flex-col gap-1">
 						<strong>{{ point.drop_point_name }}</strong>
 						<p class="text-sm">{{ formatingDate(point.open_order_date) }}</p>
-						<p v-if="currentID === point.open_order_id" @click="toNewSchedule(point)" class="active:scale-95 duration-300 text-xxs border-2 border-gray-700 rounded-full px-1">Atur ulang jadwal</p>
+						<p v-if="currentID === point.open_order_id" @click="toEditSchedule(point)" class="active:scale-95 duration-300 text-xxs border-2 border-gray-700 rounded-full px-1">Atur ulang jadwal</p>
 					</span>
 				</template>
-				<span @click="toNewSchedule" class="active:scale-95 duration-300 w-4/12">
+				<span @click="router.push({ name: 'NewSchedule' })" class="active:scale-95 duration-300 w-4/12">
 					<i class="fa fa-plus mb-2 text-gray-100 bg-gray-800 p-2 rounded-full"></i>
 					<p class="text-sm">Tambah jadwal</p>
 				</span>
@@ -32,33 +32,33 @@
 <script setup>
 
 	import { ref, computed, onMounted } from 'vue'
-	import { useRouter } from 'vue-router'
-	import { useOrders } from '@/stores/orders'  
+	import { useRouter } from 'vue-router' 
+	import { useOpenOrders } from '@/stores/openOrders'
 	import Menu from '@/components/Menu.vue'
 	import http from '@/http'
+	import formatingDate from '@/helper/formatingDate.js'
 
-	const currentID = ref(2)
+	const currentID = ref()
 	const router = useRouter()
-	const orders = useOrders()
+	const openOrders = useOpenOrders()
 
 	const dropPoints = ref()
 	//Get drop point with open order
 	onMounted(() => {
 		http.get('/open-orders', res => {
 			dropPoints.value = res.results.openOrders
+			openOrders.lists = dropPoints.value
 		})
 	})
 
-	const formatingDate = date => {
-		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-		return new Date(date).toLocaleDateString(undefined, options)
-	}
-
-	const toNewSchedule = (data) => {
-		if (data.open_order_id > 0) orders.currentDropPoint = data
-		else orders.currentDropPoint = { id: 0 }
+	const toEditSchedule = data => {
 		setTimeout(() => {
-			router.push({ name: 'EditSchedule' })
+			router.push({
+				name: 'EditSchedule',
+				params: {
+					key: data.open_order_id
+				}
+			})
 		}, 300)
 	}
 

@@ -33,6 +33,7 @@
 
 	const orderCount = ref(0)
 	const products = ref(0)
+
 	//Request to API for get products and order count
 	onMounted(() => {
 		http.get('/orders/count/all', res => {
@@ -62,61 +63,4 @@
 		}, 300);
 	}
  	
-	const exampleCard = [
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 1
-		},
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 2
-		},
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 3
-		},
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 4
-		},
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 5
-		},
-		{
-			thumb: '/american-risol.jpg',
-			title: 'American risol',
-			price: 45000,
-			prefix: 'Rp',
-			sold: 30,
-			stock: 44,
-			id: 6
-		}
-	]
-
 </script>
