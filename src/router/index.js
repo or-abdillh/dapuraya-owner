@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import guard from '@/router/guard.js'
 
 const routes = [
 	{
@@ -57,5 +58,7 @@ const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes
 })
+
+guard(router)
 
 export default router
