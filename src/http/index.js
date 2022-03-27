@@ -31,5 +31,13 @@ export default {
 		} catch(err) {
 			if (err.response) callback(err.response.data)
 		}
+	},
+	async delete(url, data, callback) {
+		try {
+			const response = await axios.delete(baseURL + url, { data, headers })
+			callback(response.data)
+		} catch(err) {
+			if (err.response) callback(err.response.data)
+		}
 	}
 }
