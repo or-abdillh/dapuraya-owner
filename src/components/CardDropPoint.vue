@@ -35,15 +35,11 @@
 			setTimeout(() => {
 				[ isLoad.value, isSuccess.value, isFail.value ] = [ false, true, false ]
 			}, 300)
-			setTimeout(() => {
-				this.reset()
-			}, 1000)
 		},
 		fail() {
-			[ isLoad.value, isSuccess.value, isFail.value ] = [ false, false, true ]
 			setTimeout(() => {
-				this.reset()
-			}, 1000)
+				[ isLoad.value, isSuccess.value, isFail.value ] = [ false, false, true ]
+			}, 300)
 		},
 		reset() {
 			[ isLoad.value, isSuccess.value, isFail.value ] = [ false, false, false ]
@@ -72,16 +68,19 @@
 	})
 
 	const deleteDropPoint = () => {
-		state.load()
-		http.delete('/admin/drop-point', { key: form.key }, res => {
-			if (res.status) {
-				state.success()
-				setTimeout(() => {
-					isShow.value = false
-				}, 500)
-			}
-			else state.fail()
-		})
+		if (form.key === false) emits('delete')
+		else {
+			state.load()
+			http.delete('/admin/drop-point', { key: form.key }, res => {
+				if (res.status) {
+					state.success()
+					setTimeout(() => {
+						isShow.value = false
+					}, 500)
+				}
+				else state.fail()
+			})	
+		}
 	}
 
 	const isLoad = ref(false)

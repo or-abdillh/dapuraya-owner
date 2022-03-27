@@ -4,7 +4,7 @@
 	</section>
 	<section class="mt-3">
 		<template v-for="dropPoint in dropPoints" :key="dropPoint.drop_point_id">
-			<CardDropPoint :isSubmit="trigger" :source="dropPoint"/>
+			<CardDropPoint :isSubmit="trigger" :source="dropPoint" v-on:delete="dropPoints.pop()"/>
 		</template>
 		<section class="w-full flex justify-between items-center">
 			<div @click="createNewCard" class="active:scale-95 duration-300">
